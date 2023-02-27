@@ -1,5 +1,5 @@
-import { fetchPost } from "../../../api/fetch_post.mjs";
-import { clear, print, prompt, printNewLine } from "../../../ui/console.mjs";
+import { fetchPost } from "../../../api/fetch_post";
+import { clear, print, prompt, printNewLine } from "../../../ui/console";
 
 export async function browsePosts() {
 	clear("nope");
@@ -7,6 +7,7 @@ export async function browsePosts() {
 	const desiredPostId = await prompt("Enter Post ID");
 
 	// TODO: should we validate this?!
+	if (typeof desiredPostId === "number") {
 
 	print(`📨 Fetching post "${desiredPostId}...`);
 
@@ -15,9 +16,10 @@ export async function browsePosts() {
 	print(`🥳 Received post:`);
 
 	console.log(result);
-
+	
 	printNewLine();
 	await prompt("⌨️ Press [ENTER] to return to the main menu! 🕶️");
 
 	return result;
+	}
 }
