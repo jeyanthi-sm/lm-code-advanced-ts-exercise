@@ -1,5 +1,5 @@
 import { User } from "../types/posts.types";
-let currentUsers:User[] = [
+let allUsers:User[] = [
 	{
 		id: "1",
 		name: "Spicy Hotfish",
@@ -23,17 +23,11 @@ let currentUsers:User[] = [
 ];
 export function getAllUsers(): User[] {
 	// in the absence of a true Model layer, our service can simply return a hard-coded array of users
-
-	return currentUsers;
+	return allUsers;
 }
-currentUsers = getAllUsers();
+allUsers = getAllUsers();
 export function addUser(inputUser:User): boolean {
-	// in the absence of a true Model layer, our service can simply return a hard-coded array of users
-    currentUsers.push(inputUser);
-	console.log([...currentUsers], inputUser)
-	//return [...getAllUsers(), inputUser];
-	console.log(inputUser);
-	console.log(currentUsers);
-    currentUsers.push(inputUser);
-    return true;
+    allUsers.push(inputUser);
+	console.log([...allUsers], inputUser)
+	return true;
 }
