@@ -9,5 +9,6 @@ export const states = {
 
 	ADD_USER: "ADD_USER",
 
+	ADD_POSTS:"ADD_POSTS",
 	UNKNOWN: "UNKNOWN",
 };
