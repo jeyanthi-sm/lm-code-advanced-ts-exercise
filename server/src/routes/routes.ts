@@ -1,7 +1,7 @@
 import * as express from "express";
 import { Express } from "express";
 import { getAllPosts } from "../services/posts_service";
-import { getAllUsers } from "../services/users_service";
+import { addUser, getAllUsers } from "../services/users_service";
 
 /*
 
@@ -77,19 +77,27 @@ function addAPIRoutes(app: Express) {
 		else res.status(200).send(JSON.stringify({ postFound: false }));
 	});
 
-	console.log("✍️  Adding user routes...");
+	console.log("✍️  Adding user routes...Display all Users");
 	apiRouter.get("/users/all", (req, res) => {
 		res.status(200).send(JSON.stringify(getAllUsers()));
 	});
 
 	console.log("✍️  Adding user routes...");
-	apiRouter.post("/users/add", (req, res) => {
+	/*apiRouter.post("/users/add", (req, res) => {
 		const { body } = req;
 		// we don't do anything with the message, but let's echo it back in the console
 		console.log(`👋 Received "${body.user}"`);
 	
 		res.status(200).send({ success:true});
+	}); */
+	apiRouter.post("/users/add", (req, res) => {
+		const { body } = req;
+		// we don't do anything with the message, but let's echo it back in the console
+	//	console.log(`👋 Received "${body.user}"`);
+		const resultAddUser = addUser(body.user)
+		res.status(200).send({ success:resultAddUser});
 	});
+
 
 
 	
